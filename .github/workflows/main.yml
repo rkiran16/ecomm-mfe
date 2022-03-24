@@ -2,11 +2,6 @@
 
 name: deploy-container
 
-
-defaults:
-  run:
-    working-directory: container
-
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
@@ -14,6 +9,8 @@ on:
     branches: main
   paths:
     - 'container/**'
+
+
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -29,6 +26,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
+        working-directory: container
         run: npm install
         run: npm run build
 
